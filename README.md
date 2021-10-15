@@ -32,3 +32,5 @@ cd build
 cmake ../kernel
 make
 ```
+# References
+[1] Beamer, Scott, Krste Asanovic, and David Patterson. "Direction-optimizing breadth-first search." SC'12: Proceedings of the International Conference on High Performance Computing, Networking, Storage and Analysis. IEEE, 2012.
