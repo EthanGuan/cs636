@@ -17,7 +17,7 @@ normal bfs parallel: 2.50072ms
 
 ## Analysis
 1. It is expected that 'normal bfs parallel' is the slowest, because it uses sychronization operation.
-2. Parallel version of bottom up is 2 times speed faster than the naive bottom up version. 
+2. Parallel version of bottom up is 2 times faster than the naive bottom up version. 
 
 # Kernel
 If you don't find pybind11 directory or its files, please run this command.
