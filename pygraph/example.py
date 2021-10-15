@@ -50,9 +50,10 @@ def test_csr():
     offset_csc = memoryview_to_np(offset_csc1, offset_dt);
     nebrs_csr  = memoryview_to_np(nebrs_csr1, csr_dt);
     nebrs_csc  = memoryview_to_np(nebrs_csc1, csr_dt);
-
-    print(offset_csr.tolist());
-    print(nebrs_csr.tolist());
+    print(offset_csr)
+    print([n[0] for n in nebrs_csr])
+    print(len(offset_csr.tolist()));
+    print(len(nebrs_csr.tolist()));
 
 def test_lanl_graph_python():
     

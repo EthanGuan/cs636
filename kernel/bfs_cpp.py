@@ -10,6 +10,7 @@ def memoryview_to_np(memview, nebr_dt):
     #a = arr.view(nebr_dt).reshape(nebr_reader.get_degree())
     a = arr.view(nebr_dt)
     return a;
+#def test_bfs():
 
 #simple plain CSR 
 def test_csr():    
@@ -59,6 +60,7 @@ def test_csr():
     G = kernel.init_graph(offset_csr, nebrs_csr, offset_csc, nebrs_csc, flag, v_count);
 
     print(G.get_vcount())
+    print(G.get_edge_count())
 
     root = 0;
     G.run_bfs(0);

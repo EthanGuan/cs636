@@ -1,0 +1,5 @@
+/media/guan/data/cs636/kernel/CMakeFiles/rebuild_cache.dir
+/media/guan/data/cs636/kernel/CMakeFiles/kernel.dir
+/media/guan/data/cs636/kernel/CMakeFiles/edit_cache.dir
+/media/guan/data/cs636/kernel/pybind11/CMakeFiles/rebuild_cache.dir
+/media/guan/data/cs636/kernel/pybind11/CMakeFiles/edit_cache.dir
