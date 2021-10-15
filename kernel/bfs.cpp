@@ -55,7 +55,7 @@ void bottom_up_step_parallel(csr_t* csr, vector<vid_t>& frontier, vector<vid_t>&
 }
 }
 
-void bfs_bottom_up(graph_t& g, vid_t root, bool parallel)
+void bfs_bottom_up(graph_t& g, vid_t root, bool parallel, bool verbose=false)
 {
     csr_t* csr = &g.csr;
     vector<vid_t> frontier(csr->get_vcount(), 0);
@@ -65,7 +65,9 @@ void bfs_bottom_up(graph_t& g, vid_t root, bool parallel)
 
     int layer_count = 0;
     while (std::count(frontier.begin(), frontier.end(), 1)!=0) {
-        //cout << "Level " << layer_count <<": " << std::count(frontier.begin(), frontier.end(), 1) << endl;
+        if (verbose) {
+            cout << "Level " << layer_count <<": " << std::count(frontier.begin(), frontier.end(), 1) << endl;
+        }
         if (parallel) {
             //bottom_up_step_parallel(csr, &frontier[0], &next[0], &parents[0]);    
             bottom_up_step_parallel(csr, frontier, next, parents);    
@@ -176,6 +178,7 @@ void run_bfs(graph_t& g, vid_t root)
     const int iter = 1000;
 
     auto t1=std::chrono::steady_clock::now();
+
     for (int i=0;i<iter;i++)
     {
         bfs_bottom_up(g, root, true);
@@ -192,6 +195,7 @@ void run_bfs(graph_t& g, vid_t root)
         bfs(g, root);
     }
     auto t4=std::chrono::steady_clock::now();
+
     for (int i=0;i<iter;i++)
     {
         bfs_parallel(g, root);
@@ -205,4 +209,5 @@ void run_bfs(graph_t& g, vid_t root)
    
     //print bfs tree here
     //i.e. how many vertex in each level
+    bfs_bottom_up(g, root, true, true);
 }
