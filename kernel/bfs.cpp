@@ -132,7 +132,7 @@ void bfs_parallel(graph_t& g, vid_t root) {
 
     visited.push_back(root);
     queue.push_back(root);
-    cout << "Level 0: " << queue.size() << endl;
+    //cout << "Level 0: " << queue.size() << endl;
     vid_t layer_count = 0;
 
     while (queue.size()>0) {
@@ -165,22 +165,23 @@ void bfs_parallel(graph_t& g, vid_t root) {
             }
         }
 }
-        if (count!=0) 
-            cout << "Level " << layer_count <<": " << queue.size() << endl;
+        // if (count!=0) 
+        //     cout << "Level " << layer_count <<": " << queue.size() << endl;
     }
-    cout << "root22 = " << root << endl; 
+    //cout << "root22 = " << root << endl; 
 }
 
 void run_bfs(graph_t& g, vid_t root)
 {
     const int iter = 1000;
+
     auto t1=std::chrono::steady_clock::now();
     for (int i=0;i<iter;i++)
     {
         bfs_bottom_up(g, root, true);
     }
     auto t2=std::chrono::steady_clock::now();
-    //bfs(g, root);
+
     for (int i=0;i<iter;i++)
     {
         bfs_bottom_up(g, root, false);
@@ -191,9 +192,15 @@ void run_bfs(graph_t& g, vid_t root)
         bfs(g, root);
     }
     auto t4=std::chrono::steady_clock::now();
-    cout<<chrono::duration<double,std::milli>(t2-t1).count()/iter<<endl;
-    cout<<chrono::duration<double,std::milli>(t3-t2).count()/iter<<endl;
-    cout<<chrono::duration<double,std::milli>(t4-t3).count()/iter<<endl;
+    for (int i=0;i<iter;i++)
+    {
+        bfs_parallel(g, root);
+    }
+    auto t5=std::chrono::steady_clock::now();
+    cout<<"bottom up parallel: " << chrono::duration<double,std::milli>(t2-t1).count()/iter<< "ms"<<endl ;
+    cout<<"bottom up : " << chrono::duration<double,std::milli>(t3-t2).count()/iter<<"ms"<<endl ;
+    cout<<"normal bfs: " << chrono::duration<double,std::milli>(t4-t3).count()/iter<<"ms"<<endl ;
+    cout<<"normal bfs parallel: " <<chrono::duration<double,std::milli>(t5-t4).count()/iter<<"ms"<<endl ;
 
    
     //print bfs tree here
