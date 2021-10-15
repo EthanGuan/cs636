@@ -8,8 +8,11 @@ There are four implementation of bfs:
 
 ## Results
 bottom up parallel: 0.0235811ms
+
 bottom up : 0.0446245ms
+
 normal bfs: 0.607461ms
+
 normal bfs parallel: 2.50072ms
 
 ## Analysis
